@@ -5,5 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println("enzo")
+	for z := 1; z <= 10; z = z + 1 {
+		fmt.Printf("%v enzo\n", z)
+	}
 }
