@@ -5,7 +5,9 @@ import (
 )
 
 func main() {
-	for z := 1; z <= 1000000; z = z + 1 {
-		fmt.Printf("%v enzo\n", z)
+	z := 1
+	fmt.Printf("%v enzo\n", z)
+	for ; z < 100000000; z = z + 1 {
 	}
+	fmt.Printf("%v enzo\n", z)
 }
