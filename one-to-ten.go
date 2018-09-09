@@ -7,14 +7,31 @@ import (
 	"fmt"
 )
 
-func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-    for scanner.Scan() {
-		sayText := "Hello " + scanner.Text() + "!"
-		fmt.Printf("%v\n", sayText)
-		exec.Command("say", sayText).Run()
-    }
-    if err := scanner.Err(); err != nil {
+var scanner *bufio.Scanner
+
+func outLine(line string) {
+	fmt.Printf("%v\n", line)
+	exec.Command("say", line).Run()	
+}
+
+func inLine() string {
+	succeeded := scanner.Scan()
+	if err := scanner.Err(); err != nil {
         fmt.Fprintln(os.Stderr, "reading standard input:", err)
-    }
+	}
+	
+	if succeeded {
+		return scanner.Text()
+	}
+
+	return ""
+}
+
+func main() {
+	// setup
+	scanner = bufio.NewScanner(os.Stdin)
+    
+	outLine("2 + 2")
+	line := inLine()
+	outLine(line)
 }
