@@ -1,13 +1,17 @@
 package main
 
 import (
+	"os"
+	"bufio"
 	"fmt"
 )
 
 func main() {
-	z := 1
-	fmt.Printf("%v enzo\n", z)
-	for ; z < 100000000; z = z + 1 {
-	}
-	fmt.Printf("%v enzo\n", z)
+	scanner := bufio.NewScanner(os.Stdin)
+    for scanner.Scan() {
+        fmt.Printf("Hello %v!\n", scanner.Text())
+    }
+    if err := scanner.Err(); err != nil {
+        fmt.Fprintln(os.Stderr, "reading standard input:", err)
+    }
 }
